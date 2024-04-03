@@ -3,7 +3,6 @@
 __version__ = '0.1'
 
 from socket import socket, AF_INET, SOCK_STREAM, gaierror, error
-from platform import system as operatingSystem
 from optioner import options
 from sys import argv
 from re import match
@@ -18,17 +17,28 @@ class _scan_ports_:
             targets (str | list[str]): target ip
             nports (int, optional): Number of ports to scan. Defaults to 65535.
         """
-        # call scan according to targets
+        # print logo
+        print(termcolor.colored('target-ports', 'blue'), termcolor.colored(f'v{__version__}', 'red'), 'Jumpstart')
         
+        # define a container
+        self.container = []
+        
+        # call scan according to targets
         if type(targets)==str:
             self.scan(targets, nports)
+            if len(self.container)==0:
+                print('|-- No Ports Opened for', termcolor.colored(f'{targets}', 'red'))
+                self.container = []
         elif type(targets)==list[str]:
-            print(termcolor.colored((f'-- Multiple Targets Detected.'), 'blue'))
+            print(termcolor.colored((f'|-- Multiple Targets Detected.'), 'blue'))
             for target in targets:
                 self.scan(target, nports)
+                if len(self.container)==0:
+                    print('|-- No Ports Opened for', termcolor.colored(f'{target}', 'red'))
+                    self.container = []
     
     def scan(self, target:str, ports: int):
-        print(termcolor.colored((f'\n-- Starting scan for {target}.'), 'light_red'))
+        print('|-- Starting scan for', termcolor.colored(f'{target}.', 'red'))
         for port in range(1, ports+1):
             self.scanport(target, port)
     
@@ -38,8 +48,9 @@ class _scan_ports_:
             s = sock.connect_ex((target, port))
             if s==0:
                 print(termcolor.colored((f'[+] Port {port} is opened.'), 'green'))
+                self.container.append(port)
             else:
-                print(f'[-] port {port} is closed.', end='\r')
+                print(termcolor.colored(f'[-] port {port} is closed.', 'yellow'), end='\r')
             sock.close()
         except KeyboardInterrupt:
             exit(1)
