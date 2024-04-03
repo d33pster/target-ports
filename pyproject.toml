@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "target-ports"
+version = "0.1.1"
+description = "Scan ports of a target"
+requires-python = ">=3.9"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    'termcolor',
+    'optioner>=1.4.4'
+]
+keywords = ['d33pster', 'port scanner', 'port', 'scanner', 'recon', 'portscanner', 'target-ports', 'targetports']
+readme = {file = "README.md", content-type = "text/markdown"}
+license = { file = "LICENSE" }
+authors = [
+    {name = "Soumyo Deep Gupta", email = "deep.main.ac@gmail.com"}
+]
+maintainers = [
+    {name = "Soumyo Deep Gupta", email = "deep.main.ac@gmail.com"}
+]
+
+[project.scripts]
+tports='target_ports.target_ports:main'
+
+[project.urls]
+GitHub = 'https://github.com/d33pster/target-ports'
+Issues = 'https://github.com/d33pster/target-ports/issues'
+Documentation = 'https://d33pster.github.io/target-ports/'
