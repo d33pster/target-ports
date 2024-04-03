@@ -80,7 +80,7 @@ def main():
     
     args, check, error, falseargs = optionctrl._argparse()
     
-    ports = 100
+    ports = 65535
     target: str | list[str]
     current:bool = False
     
