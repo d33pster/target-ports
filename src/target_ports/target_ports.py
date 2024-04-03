@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-__version__ = '1.0.7'
+__version__ = '2.0'
 
 from socket import socket, AF_INET, SOCK_STREAM, gaierror, error, setdefaulttimeout
 from optioner import options
@@ -29,6 +29,8 @@ class _scan_ports_:
             if len(self.container)==0:
                 print('|-- No Ports Opened for', termcolor.colored(f'{targets}', 'red'))
                 self.container = []
+            else:
+                print('|-- Scan ended for', termcolor.colored(f'{targets}', 'red'))
         elif type(targets)==list[str]:
             print(termcolor.colored((f'|-- Multiple Targets Detected.'), 'blue'))
             for target in targets:
@@ -36,6 +38,8 @@ class _scan_ports_:
                 if len(self.container)==0:
                     print('|-- No Ports Opened for', termcolor.colored(f'{target}', 'red'))
                     self.container = []
+                else:
+                    print('|-- Scan ended for', termcolor.colored(f'{target}', 'red'))
     
     def scan(self, target:str, ports: int):
         print('|-- Starting scan for', termcolor.colored(f'{target}.', 'red'))
@@ -45,7 +49,7 @@ class _scan_ports_:
     def scanport(self, target:str, port: int):
         try:
             sock = socket(AF_INET, SOCK_STREAM)
-            setdefaulttimeout(2.5)
+            setdefaulttimeout(1.1)
             s = sock.connect_ex((target, port))
             if s==0:
                 print(termcolor.colored((f'[+] Port {port} is opened.'), 'green'))
@@ -54,6 +58,8 @@ class _scan_ports_:
                 print(termcolor.colored(f'[-] port {port} is closed.', 'yellow'), end='\r')
             sock.close()
         except KeyboardInterrupt:
+            print('error', end='\r')
+            print('|-- EXIT -', termcolor.colored('Keyboard Interrupt', 'red'))
             exit(1)
         except gaierror:
             print(termcolor.colored('SCANERROR', 'red'), f' : cannot resolve {target}.')
