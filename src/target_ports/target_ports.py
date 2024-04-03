@@ -10,13 +10,13 @@ from re import match
 import termcolor
 
 class _scan_ports_:
-    def __init__(self, targets:str | list[str], nports: int = 100):
+    def __init__(self, targets:str | list[str], nports: int = 65535):
         """_scan_ports_:
         Scan ports on a target.
 
         Args:
             targets (str | list[str]): target ip
-            nports (int, optional): Number of ports to scan. Defaults to 100.
+            nports (int, optional): Number of ports to scan. Defaults to 65535.
         """
         # call scan according to targets
         
@@ -64,7 +64,7 @@ def helper():
     print('  |  -c or --current   : scan localhost.')
     print('  |  -t or --target    : specify single target.')
     print('  |  -ts or --targets  : specify multiple targets.')
-    print('  |  -p or --ports     : number of ports to scan (each, if more than one target is provided.)[optional: default -> 100]')
+    print('  |  -p or --ports     : number of ports to scan (each, if more than one target is provided.)[optional: default -> 65535]')
     print(termcolor.colored('\nNote', 'red') + ':')
     print('     (i) -t(or --target) and -ts(or --targets) are mutually exclusive.')
     print('    (ii) -p(or --ports) is optional.')

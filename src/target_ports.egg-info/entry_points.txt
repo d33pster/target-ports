@@ -1,2 +1,0 @@
-[console_scripts]
-tports = target_ports.target_ports:main
