@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "target-ports"
-version = "1.0.6"
+version = "1.0.7"
 description = "Scan ports of a target"
 requires-python = ">=3.9"
 classifiers = [
