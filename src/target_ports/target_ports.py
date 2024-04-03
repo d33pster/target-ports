@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-__version__ = '1.0.6'
+__version__ = '1.0.7'
 
-from socket import socket, AF_INET, SOCK_STREAM, gaierror, error
+from socket import socket, AF_INET, SOCK_STREAM, gaierror, error, setdefaulttimeout
 from optioner import options
 from sys import argv
 from re import match
@@ -45,6 +45,7 @@ class _scan_ports_:
     def scanport(self, target:str, port: int):
         try:
             sock = socket(AF_INET, SOCK_STREAM)
+            setdefaulttimeout(2.5)
             s = sock.connect_ex((target, port))
             if s==0:
                 print(termcolor.colored((f'[+] Port {port} is opened.'), 'green'))
