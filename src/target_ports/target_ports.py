@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-__version__ = '0.1'
+__version__ = '1.0.6'
 
 from socket import socket, AF_INET, SOCK_STREAM, gaierror, error
 from optioner import options
