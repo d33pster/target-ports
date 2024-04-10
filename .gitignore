@@ -1,2 +1,4 @@
 dist/
 src/target_ports.egg-info/*
+tests/__pycache__
+build/
