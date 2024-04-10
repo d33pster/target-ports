@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/d33pster/target-ports/graph/badge.svg?token=PW5VH9WBC8)](https://codecov.io/gh/d33pster/target-ports)
+[![Features Test CI](https://github.com/d33pster/target-ports/actions/workflows/FeaturesTestCI.yml/badge.svg)](https://github.com/d33pster/target-ports/actions/workflows/FeaturesTestCI.yml)
 ![PyPI - Version](https://img.shields.io/pypi/v/target-ports)
 ![GitHub last commit](https://img.shields.io/github/last-commit/d33pster/target-ports)
 ![Static Badge](https://img.shields.io/badge/Dependencies-optioner%3E%3D1.4.5%2C%20termcolor-purple?style=plastic&logo=python&logoColor=pink&link=https%3A%2F%2Fgithub.com%2Fd33pster%2Foptioner)
